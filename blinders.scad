@@ -3,21 +3,22 @@ $fn=50;
 CORNER_RADIUS = 4;
 
 // thickness of the shield
-SHIELD_THICK = 1;
+SHIELD_THICK = 2;
 
 // length, thickness and height of the part that attaches to the glasses
 ATT_LEN = 20;
 ATT_THICK = 1;
-ATT_HEIGHT = 12;
+ATT_HEIGHT = 10;
 
 // width of the glasses arm
-ARM_WIDTH = 2.0;
+ARM_WIDTH = 2.4;
+
 // shield
 hull() {
-    translate([-25, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // TL
+    translate([-35, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // TL
     translate([30, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // TR
     translate([30, -20, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // BR
-    translate([-25, -20, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // BL
+    translate([-35, -30, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // BL
 }
 
 // attachment - horizontal part
