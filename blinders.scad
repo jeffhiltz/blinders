@@ -3,7 +3,7 @@ $fn=50;
 CORNER_RADIUS = 4;
 
 // thickness of the shield
-SHIELD_THICK = 2;
+SHIELD_THICK = 1;
 
 // length, thickness and height of the part that attaches to the glasses
 ATT_LEN = 20;
@@ -11,7 +11,7 @@ ATT_THICK = 1;
 ATT_HEIGHT = 10;
 
 // width of the glasses arm
-ARM_WIDTH = 2.4;
+ARM_WIDTH = 2;
 
 //  only render the arm clip in order to test sizing.
 ONLY_PRINT_ATT = false;
@@ -19,10 +19,10 @@ ONLY_PRINT_ATT = false;
 module blinder() {
   // shield
   hull() {
-      translate([-35, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // TL
-      translate([30, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // TR
-      translate([30, -20, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // BR
-      translate([-35, -30, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // BL
+      translate([-35, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // top-front
+      translate([30, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // top-back
+      translate([30, -20, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // bottom - back
+      translate([-35, -30, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // bottom - front
   }
 
   // attachment - horizontal part
