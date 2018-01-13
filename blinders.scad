@@ -1,41 +1,41 @@
-$fn=50;
+$fn = 50;
 
 CORNER_RADIUS = 4;
 
 // thickness of the shield
-SHIELD_THICK = 1.5;
+SHEILD_THICKNESS = 1.5;
 
-// length, thickness and height of the part that attaches to the glasses
-ATT_LEN = 20;
-ATT_THICK = 1;
-ATT_HEIGHT = 10;
+// length, thickness and height of the clip that attaches to the glasses
+CLIP_LENGTH = 20;
+CLIP_THICKNESS = 1;
+CLIP_HEIGHT = 10;
 
 // width of the glasses arm
 ARM_WIDTH = 2;
 
 //  only render the arm clip in order to test sizing.
-ONLY_PRINT_ATT = false;
+ONLY_PRINT_CLIP = false;
 
 module blinder() {
   // shield
   hull() {
-      translate([-45, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // top-front
-      translate([30, 5, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // top-back
-      translate([30, -20, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // bottom - back
-      translate([-45, -40, 0]) cylinder(SHIELD_THICK, r = CORNER_RADIUS); // bottom - front
+      translate([-45, 5, 0]) cylinder(SHEILD_THICKNESS, r = CORNER_RADIUS); // top - front
+      translate([30, 5, 0]) cylinder(SHEILD_THICKNESS, r = CORNER_RADIUS); // top - back
+      translate([30, -20, 0]) cylinder(SHEILD_THICKNESS, r = CORNER_RADIUS); // bottom - back
+      translate([-45, -40, 0]) cylinder(SHEILD_THICKNESS, r = CORNER_RADIUS); // bottom - front
   }
 
-  // attachment - horizontal part
-  cube([ATT_LEN, ATT_THICK, ARM_WIDTH + ATT_THICK + SHIELD_THICK]);
+  // clip - horizontal part
+  cube([CLIP_LENGTH, CLIP_THICKNESS, ARM_WIDTH + CLIP_THICKNESS + SHEILD_THICKNESS]);
 
-  // attachment - vertical part
-  translate([0, 0, SHIELD_THICK + ARM_WIDTH]) rotate([90, 0, 0]) cube([ATT_LEN, ATT_THICK, ATT_HEIGHT]);
+  // clip - vertical part
+  translate([0, 0, SHEILD_THICKNESS + ARM_WIDTH]) rotate([90, 0, 0]) cube([CLIP_LENGTH, CLIP_THICKNESS, CLIP_HEIGHT]);
 }
 
-if (ONLY_PRINT_ATT) {
+if (ONLY_PRINT_CLIP) {
   intersection() {
     blinder();
-    translate([-5, -(ATT_HEIGHT + 5), 0]) cube([ATT_LEN + 10, 100, SHIELD_THICK + ARM_WIDTH + ATT_THICK]);
+    translate([-5, -(CLIP_HEIGHT + 5), 0]) cube([CLIP_LENGTH + 10, 100, SHEILD_THICKNESS + ARM_WIDTH + CLIP_THICKNESS]);
   }
 } else {
   blinder();
