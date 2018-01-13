@@ -1,4 +1,4 @@
-$fn = 50;
+$fn=50;
 
 CORNER_RADIUS = 4;
 
@@ -12,6 +12,9 @@ CLIP_HEIGHT = 10;
 
 // width of the glasses arm
 ARM_WIDTH = 2;
+
+// by default the blinder for the right is rendered. Enable mirroring to render the left side
+MIRROR = false;
 
 //  only render the arm clip in order to test sizing.
 ONLY_PRINT_CLIP = false;
@@ -38,5 +41,9 @@ if (ONLY_PRINT_CLIP) {
     translate([-5, -(CLIP_HEIGHT + 5), 0]) cube([CLIP_LENGTH + 10, 100, SHEILD_THICKNESS + ARM_WIDTH + CLIP_THICKNESS]);
   }
 } else {
-  blinder();
+  if (MIRROR) {
+    mirror([1, 0, 0]) blinder();
+  } else {
+    blinder();
+  }
 }
